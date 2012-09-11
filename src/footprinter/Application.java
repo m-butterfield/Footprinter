@@ -5,10 +5,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -18,6 +14,10 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 
 
@@ -56,7 +56,7 @@ public class Application implements IApplication {
 		Display display = Display.getDefault();
 		createContents();
 		Image icon = new Image(display, Application.class.getResourceAsStream("/icons/MontyPythonFoot128.gif"));
-	    shell.setImage(icon); 
+		shell.setImage(icon); 
 		shell.open();
 		shell.layout();
 		while (!shell.isDisposed()) {

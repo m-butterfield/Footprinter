@@ -10,18 +10,18 @@ public class Photo {
 	// will need to convert o,p,k to radians
 	private double radOValue, radPValue, radKValue;
 	private double[][] cornerCoordinates = new double[4][2];
-    private double r11, r12, r13, r21, r22, r23, r31, r32, r33; // rotation matrix elements
-    private String EPSGcode;
-    // UCX image coordinates and focal length
-    private final double UCX_IMAGE_Y_FRONT = -33.912, UCX_IMAGE_Y_BACK = 33.912;
-    private final double UCX_IMAGE_X_RIGHT = -51.948, UCX_IMAGE_X_LEFT = 51.948;
-    private final double UCX_FOCAL_LENGTH = 100.5;
+	private double r11, r12, r13, r21, r22, r23, r31, r32, r33; // rotation matrix elements
+	private String EPSGcode;
+	// UCX image coordinates and focal length
+	private final double UCX_IMAGE_Y_FRONT = -33.912, UCX_IMAGE_Y_BACK = 33.912;
+	private final double UCX_IMAGE_X_RIGHT = -51.948, UCX_IMAGE_X_LEFT = 51.948;
+	private final double UCX_FOCAL_LENGTH = 100.5;
 
     // Constructor for a photo object
 	public Photo(String nextLine, double groundHeight, String EPSGcode) {
 		this.groundHeight = groundHeight;
 		this.EPSGcode = EPSGcode;
-		if (!nextLine.contains("#")) { // ignore grouping separator
+		if (!nextLine.contains("#")) { // detect grouping separator
 		this.dataFields = nextLine.split("[\\s,]+"); // file will be comma or space delimited
 		photoID = dataFields[0];
 		xValue = Double.parseDouble(dataFields[1]);
@@ -120,6 +120,7 @@ public class Photo {
 
 	@Override
 	public String toString() {
+		// returns empty string if grouping separator is detected
 		if (dataFields[0] != "#") {
 		return  "	<Placemark>\n		<name>" + photoID + "</name>\n		<description>"
 				+ "xValue=" + xValue
