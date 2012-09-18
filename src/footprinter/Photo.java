@@ -22,7 +22,7 @@ public class Photo {
 		this.groundHeight = groundHeight;
 		this.EPSGcode = EPSGcode;
 		if (!nextLine.contains("#")) { // detect grouping separator
-		this.dataFields = nextLine.split("[\\s,]+"); // file will be comma or space delimited
+		dataFields = nextLine.split("[\\s,]+"); // file will be comma or space delimited
 		photoID = dataFields[0];
 		xValue = Double.parseDouble(dataFields[1]);
 		yValue = Double.parseDouble(dataFields[2]);
@@ -154,12 +154,12 @@ public class Photo {
 
 //  Here is an alternate rotation matrix that may work as well, may need some slight 
 //  modifications to the coordinate computation formulas though
-//  this.r11 = Math.cos(pValue) * Math.cos(kValue);
-//  this.r12 = -Math.cos(pValue) * Math.sin(kValue);
-//  this.r13 = Math.sin(pValue);
-//  this.r21 = Math.cos(oValue) * Math.sin(kValue) + Math.sin(oValue) * Math.sin(pValue) * Math.cos(kValue);
-//  this.r22 = Math.cos(oValue) * Math.cos(kValue) - Math.sin(oValue) * Math.sin(pValue) * Math.sin(kValue);
-//  this.r23 = -Math.sin(oValue) * Math.cos(pValue);
-//  this.r31 = Math.sin(oValue) * Math.sin(kValue) - Math.cos(oValue) * Math.sin(pValue) * Math.cos(kValue);
-//  this.r32 = Math.sin(oValue) * Math.cos(kValue) + Math.cos(oValue) * Math.sin(pValue) * Math.sin(kValue);
-//  this.r33 = Math.cos(oValue) * Math.cos(pValue);
+//  r11 = Math.cos(pValue) * Math.cos(kValue);
+//  r12 = -Math.cos(pValue) * Math.sin(kValue);
+//  r13 = Math.sin(pValue);
+//  r21 = Math.cos(oValue) * Math.sin(kValue) + Math.sin(oValue) * Math.sin(pValue) * Math.cos(kValue);
+//  r22 = Math.cos(oValue) * Math.cos(kValue) - Math.sin(oValue) * Math.sin(pValue) * Math.sin(kValue);
+//  r23 = -Math.sin(oValue) * Math.cos(pValue);
+//  r31 = Math.sin(oValue) * Math.sin(kValue) - Math.cos(oValue) * Math.sin(pValue) * Math.cos(kValue);
+//  r32 = Math.sin(oValue) * Math.cos(kValue) + Math.cos(oValue) * Math.sin(pValue) * Math.sin(kValue);
+//  r33 = Math.cos(oValue) * Math.cos(pValue);

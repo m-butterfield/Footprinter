@@ -7,6 +7,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -86,9 +87,9 @@ public class Application implements IApplication {
 				public void widgetSelected(SelectionEvent e) {
 					FileDialog dlg = new FileDialog(btnBrowse.getShell(), SWT.OPEN);
 					dlg.setText("Open");
-				    dlg.setFilterPath("C:/");
-				    String[] filterExt = { "*.txt", "*.csv", "*.prn", "*.*" };
-				    dlg.setFilterExtensions(filterExt);
+					dlg.setFilterPath("C:/");
+					String[] filterExt = { "*.txt", "*.csv", "*.prn", "*.*" };
+					dlg.setFilterExtensions(filterExt);
 					String path = dlg.open();
 					if (path == null) return;
 					text_1.setText(path);
@@ -105,10 +106,10 @@ public class Application implements IApplication {
 		btnBrowse2.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				FileDialog dlg = new FileDialog(btnBrowse.getShell(), SWT.SAVE);
+				FileDialog dlg = new FileDialog(btnBrowse2.getShell(), SWT.SAVE);
 				dlg.setText("Open");
-		        String[] filterExt = { "*.kml", "*.*" };
-		        dlg.setFilterExtensions(filterExt);
+				String[] filterExt = { "*.kml", "*.*" };
+				dlg.setFilterExtensions(filterExt);
 				String path = dlg.open();
 				if (path == null) return;
 				text_2.setText(path);
@@ -135,57 +136,57 @@ public class Application implements IApplication {
 				try {
 					output = new PrintWriter(outputFile);
 					output.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + 
-							"\n<kml xmlns=\"http://www.opengis.net/kml/2.2\"" +
-							" xmlns:gx=\"http://www.google.com/kml/ext/2.2\"" + 
-							" xmlns:kml=\"http://www.opengis.net/kml/2.2\"" +
-							" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n" +
-			                "<Document>\n" +
-						    "	<name>FOOTPRINTS</name>\n" + 
-						    "	<open>1</open>\n" +  
-			                "	<Style id=\"sh_ylw-pushpin\">\n" + 
-							"		<IconStyle>\n" +
-						    "			<scale>1.3</scale>\n" + 
-					        "			<Icon>\n"+
-							"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>\n" + 
-							"			</Icon>\n" + 
-							"			<hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/>\n" + 
-							"		</IconStyle>\n" + 
-							"		<LineStyle>\n" + 
-							"			<color>87000000</color>\n" + 
-							"			<width>1.9</width>\n" + 
-							"		</LineStyle>\n" + 
-							"		<PolyStyle>\n" + 
-							"			<color>7300aa00</color>\n" + 
-							"			<outline>0</outline>\n" + 
-							"		</PolyStyle>\n" + 
-						    "	</Style>\n" + 
-						    "	<Style id=\"sn_ylw-pushpin\">\n" + 
-							"		<IconStyle>\n" + 
-							"			<scale>1.1</scale>\n" + 
-							"			<Icon>\n" + 
-						    "				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>\n" + 
-							"			</Icon>\n" + 
-							"			<hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/>\n" + 
-							"		</IconStyle>\n" + 
-							"		<LineStyle>\n" + 
-							"			<color>87000000</color>\n" + 
-							"			<width>1.9</width>\n" + 
-							"		</LineStyle>\n" + 
-							"		<PolyStyle>\n" + 
-							"			<color>7300aa00</color>\n" + 
-							"			<outline>0</outline>\n" + 
-							"		</PolyStyle>\n" + 
-						    "	</Style>\n" + 
-						    "	<StyleMap id=\"msn_ylw-pushpin0\">\n" + 
-							"		<Pair>\n" + 
-							"			<key>normal</key>\n" + 
-							"			<styleUrl>#sn_ylw-pushpin</styleUrl>\n" + 
-							"		</Pair>\n" + 
-							"		<Pair>\n" + 
-							"			<key>highlight</key>\n" + 
-							"			<styleUrl>#sh_ylw-pushpin</styleUrl>\n" + 
-							"		</Pair>\n" + 
-						    "	</StyleMap>)\n");
+								 "\n<kml xmlns=\"http://www.opengis.net/kml/2.2\"" +
+								 " xmlns:gx=\"http://www.google.com/kml/ext/2.2\"" + 
+								 " xmlns:kml=\"http://www.opengis.net/kml/2.2\"" +
+								 " xmlns:atom=\"http://www.w3.org/2005/Atom\">\n" +
+								 "<Document>\n" +
+								 "	<name>FOOTPRINTS</name>\n" + 
+								 "	<open>1</open>\n" +  
+								 "	<Style id=\"sh_ylw-pushpin\">\n" + 
+								 "		<IconStyle>\n" +
+								 "			<scale>1.3</scale>\n" + 
+								 "			<Icon>\n"+
+								 "				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>\n" + 
+								 "			</Icon>\n" + 
+								 "			<hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/>\n" + 
+								 "		</IconStyle>\n" + 
+								 "		<LineStyle>\n" + 
+								 "			<color>87000000</color>\n" + 
+								 "			<width>1.9</width>\n" + 
+								 "		</LineStyle>\n" + 
+								 "		<PolyStyle>\n" + 
+								 "			<color>7300aa00</color>\n" + 
+								 "			<outline>0</outline>\n" + 
+								 "		</PolyStyle>\n" + 
+								 "	</Style>\n" + 
+								 "	<Style id=\"sn_ylw-pushpin\">\n" + 
+								 "		<IconStyle>\n" + 
+								 "			<scale>1.1</scale>\n" + 
+								 "			<Icon>\n" + 
+								 "				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>\n" + 
+								 "			</Icon>\n" + 
+								 "			<hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/>\n" + 
+								 "		</IconStyle>\n" + 
+								 "		<LineStyle>\n" + 
+								 "			<color>87000000</color>\n" + 
+								 "			<width>1.9</width>\n" + 
+								 "		</LineStyle>\n" + 
+								 "		<PolyStyle>\n" + 
+								 "			<color>7300aa00</color>\n" + 
+								 "			<outline>0</outline>\n" + 
+								 "		</PolyStyle>\n" + 
+								 "	</Style>\n" + 
+								 "	<StyleMap id=\"msn_ylw-pushpin0\">\n" + 
+								 "		<Pair>\n" + 
+								 "			<key>normal</key>\n" + 
+								 "			<styleUrl>#sn_ylw-pushpin</styleUrl>\n" + 
+								 "		</Pair>\n" + 
+								 "		<Pair>\n" + 
+								 "			<key>highlight</key>\n" + 
+								 "			<styleUrl>#sh_ylw-pushpin</styleUrl>\n" + 
+								 "		</Pair>\n" + 
+								 "	</StyleMap>)\n");
 					while (input.hasNext()) {
 						Photo photo = new Photo(input.nextLine(), groundHeight, EPSGcode);
 						photo.computeCornerCoordinates();
@@ -193,8 +194,10 @@ public class Application implements IApplication {
 					}
 					input.close();
 					output.print("</Document>\n</kml>");
-					System.out.println("DONE");
 					output.close();
+					MessageBox success = new MessageBox(shell);
+					success.setMessage("Success!");
+					success.open();
 					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
